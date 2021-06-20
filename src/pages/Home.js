@@ -1,9 +1,7 @@
-import '../App.css';
-
 const Home = () => {
     return (
     <>
-      <h1 className='home'>EPIC</h1>
+      <h1 className='home'>Home</h1>
     </>
      );
 }

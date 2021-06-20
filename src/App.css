@@ -6,12 +6,16 @@
   }
   
   .home,
-  .services,
-  .products,
-  .contact-us,
+  .about-us,
+  .child-care,
+  .pet-care,
   .sign-up,
-  .marketing,
-  .consulting {
+  .login,
+  .hospital,
+  .fundraiser,
+  .bloodbanks,
+  .diagnostic-centers,
+  .pharmacies{
     display: flex;
     height: 90vh;
     align-items: center;
@@ -28,7 +32,7 @@
     font-size: 100px;
   }
   
-  .services {
+  .child-care {
     background-image: url('./images/img-2.jpg');
     background-position: center;
     background-size: cover;
@@ -37,7 +41,7 @@
     font-size: 100px;
   }
   
-  .products {
+  .pet-care {
     background-image: url('./images/img-3.jpg');
     background-position: center;
     background-size: fill;
@@ -46,7 +50,7 @@
     font-size: 100px;
   }
   
-  .contact-us {
+  .about-us {
     background-image: url('./images/img-4.jpg');
     background-position: center;
     background-size: cover;
@@ -64,7 +68,7 @@
     font-size: 100px;
   }
   
-  .marketing {
+  .login {
     background-image: url('./images/img-6.jpg');
     background-position: center;
     background-size: cover;
@@ -73,7 +77,7 @@
     font-size: 100px;
   }
   
-  .consulting {
+  .fundraiser {
     background-image: url('./images/img-5.jpg');
     background-position: bottom;
     background-size: cover;
