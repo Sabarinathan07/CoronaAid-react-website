@@ -37,8 +37,8 @@ function Navbar() {
         <>
             <IconContext.Provider value={{ color: "#fff" }}>
 			<nav className="navbar">
-				<Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-					CoronaAid
+					<Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+						CoronaAid
 					<ImAidKit className="icon"/>
 				</Link>
 				<div className="menu-icon" onClick={handleClick}>
