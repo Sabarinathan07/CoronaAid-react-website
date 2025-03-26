@@ -1,8 +1,8 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-const cookieParser = require("cookie-parser");
-const cors = require("cors");
+const express = require('express');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser');
+const cors = require('cors');
 
 dotenv.config();
 
@@ -15,30 +15,27 @@ app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));
 app.use(express.json());
 app.use(cookieParser());
 app.use(
-  cors({
-    origin: [
-      "http://localhost:3000",
-      "https://mern-auth-template-tutorial.netlify.app",
-    ],
-    credentials: true,
-  })
+	cors({
+		origin: [
+			'http://localhost:3000',
+			'https://mern-auth-template-tutorial.netlify.app',
+		],
+		credentials: true,
+	})
 );
 
 // connect to mongoDB
 
-mongoose.connect(
-  process.env.MDB_CONNECT,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-  (err) => {
-    if (err) return console.error(err);
-    console.log("Connected to MongoDB");
-  }
-);
+(async () => {
+	try {
+		await mongoose.connect(process.env.MDB_CONNECT);
+		console.log('Successfully connected to MongoDB');
+	} catch (err) {
+		console.error('Error connecting to MongoDB:', err);
+	}
+})();
 
 // set up routes
 
-app.use("/auth", require("./routers/userRouter"));
-app.use("/customer", require("./routers/customerRouter"));
+app.use('/auth', require('./routers/userRouter'));
+app.use('/customer', require('./routers/customerRouter'));

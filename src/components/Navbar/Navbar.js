@@ -1,14 +1,13 @@
-import React, { useState, useContext } from "react";
-import LoginButton from "../Button/LoginButton";
-import LogoutButton from "../Button/LogoutButton";
-import { Link,useHistory } from "react-router-dom";
+import React, { useState, useContext } from 'react';
+import LoginButton from '../Button/LoginButton';
+import LogoutButton from '../Button/LogoutButton';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import "./Navbar.css";
-import Dropdown from "../Dropdown/Dropdown";
-import { ImAidKit } from "react-icons/im";
-import { IconContext } from "react-icons/lib";
-import AuthContext from "../../context/AuthContext";
-
+import './Navbar.css';
+import Dropdown from '../Dropdown/Dropdown';
+import { ImAidKit } from 'react-icons/im';
+import { IconContext } from 'react-icons/lib';
+import AuthContext from '../../context/AuthContext';
 
 function Navbar() {
 	const { loggedIn } = useContext(AuthContext);
@@ -39,32 +38,34 @@ function Navbar() {
 	};
 
 	const { getLoggedIn } = useContext(AuthContext);
-  const history = useHistory();
+	const history = useNavigate();
 
-  async function logout() {
-      await axios.get("http://localhost:5000/auth/logout");
-      await getLoggedIn();
-      history.push("/home");
-  }
+	async function logout() {
+		await axios.get('http://localhost:5000/auth/logout');
+		await getLoggedIn();
+		history.push('/home');
+	}
 
 	return (
 		<>
-			<IconContext.Provider value={{ color: "#fff" }}>
+			<IconContext.Provider value={{ color: '#fff' }}>
 				<nav className="navbar">
-					<Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+					<Link
+						to="/"
+						className="navbar-logo"
+						onClick={closeMobileMenu}>
 						CoronaAid
 						<ImAidKit className="icon" />
 					</Link>
 					<div className="menu-icon" onClick={handleClick}>
-						<i className={click ? "fas fa-times" : "fas fa-bars"} />
+						<i className={click ? 'fas fa-times' : 'fas fa-bars'} />
 					</div>
-					<ul className={click ? "nav-menu active" : "nav-menu"}>
+					<ul className={click ? 'nav-menu active' : 'nav-menu'}>
 						<li className="nav-item">
 							<Link
 								to="/about-us"
 								className="nav-links"
-								onClick={closeMobileMenu}
-							>
+								onClick={closeMobileMenu}>
 								About Us
 							</Link>
 						</li>
@@ -72,25 +73,24 @@ function Navbar() {
 							className="nav-item"
 							onMouseEnter={onMouseEnter}
 							onMouseLeave={onMouseLeave}
-							onClick={extendElement}
-						>
+							onClick={extendElement}>
 							<Link
 								to="/fundraiser"
 								className="nav-links"
-								onClick={extendElement}
-							>
+								onClick={extendElement}>
 								Support
 								<i className="fas fa-caret-down" />
 							</Link>
 							{/* {dropdown && <Dropdown />} */}
-							{dropdown && <Dropdown onCloseMobileMenu={closeMobileMenu} />}
+							{dropdown && (
+								<Dropdown onCloseMobileMenu={closeMobileMenu} />
+							)}
 						</li>
 						<li className="nav-item">
 							<Link
 								to="/child-care"
 								className="nav-links"
-								onClick={closeMobileMenu}
-							>
+								onClick={closeMobileMenu}>
 								Child Care
 							</Link>
 						</li>
@@ -98,8 +98,7 @@ function Navbar() {
 							<Link
 								to="/pet-care"
 								className="nav-links"
-								onClick={closeMobileMenu}
-							>
+								onClick={closeMobileMenu}>
 								Pet Care
 							</Link>
 						</li>
@@ -107,8 +106,7 @@ function Navbar() {
 							<Link
 								to="/sign-up"
 								className="nav-links"
-								onClick={closeMobileMenu}
-							>
+								onClick={closeMobileMenu}>
 								Become a Volunteer
 							</Link>
 						</li>
@@ -118,8 +116,7 @@ function Navbar() {
 								<Link
 									to="/login"
 									className="nav-links-mobile"
-									onClick={closeMobileMenu}
-								>
+									onClick={closeMobileMenu}>
 									Login
 								</Link>
 							)}
@@ -127,8 +124,7 @@ function Navbar() {
 								<Link
 									to="/logout"
 									className="nav-links-mobile"
-									onClick={closeMobileMenu && logout}
-								>
+									onClick={closeMobileMenu && logout}>
 									Logout
 								</Link>
 							)}
